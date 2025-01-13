@@ -1,0 +1,60 @@
+/* Payments.css */
+
+/* Page Layout */
+.payments-page {
+    padding: 80px 20px; /* Adds space below fixed header */
+  }
+  
+  .payments-page h1 {
+    text-align: center;
+    color: #6c63ff;
+    margin-bottom: 20px;
+  }
+  
+  /* Secondary Navigation */
+  .payments-page nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .payments-page nav ul li {
+    margin: 0 15px;
+  }
+  
+  .payments-page nav ul li a {
+    font-size: 16px;
+    color: #6c63ff;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .payments-page nav ul li a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #6c63ff;
+    color: white;
+  }
+  
+  tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  

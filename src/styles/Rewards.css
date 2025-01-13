@@ -1,0 +1,40 @@
+/* Rewards.css */
+
+/* Layout */
+.rewards-page {
+    padding: 80px 20px; /* Space below header */
+    text-align: center;
+  }
+  
+  .rewards-page h1 {
+    color: #6c63ff;
+    margin-bottom: 20px;
+  }
+  
+  /* Reward Cards */
+  .rewards-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .reward-card {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reward-card h3 {
+    color: #6c63ff;
+    margin-bottom: 10px;
+  }
+  
+  .reward-card button {
+    margin-top: 10px;
+  }
+  
