@@ -7,7 +7,7 @@ import dash2 from '../images/dash2.jpg';
 const Dashboard = () => {
   return (
     <div className="dashboard-page">
-      <WelcomeBanner text="Welcome, Username" />
+      <WelcomeBanner text="Welcome to Budget Bounty" />
       <div className="dashboard-top">
         <div className="dashboard-text">
           <h2>Pay it safe with built-in security</h2>

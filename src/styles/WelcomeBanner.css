@@ -2,10 +2,19 @@
 
 .welcome-banner {
   background-color: #6c63ff; /* Purple background */
-  color: white; /* Text color */
+  color: white;
   text-align: center;
-  padding: 20px;
+  padding: 50px;
   font-size: 32px;
-  margin: 0; /* Ensure no extra spacing */
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  margin: 0 auto; /* Center the banner */
+  width: 93%; /* Reduce width to make space for rounded corners */
+  border-radius: 7px; /* Adjust as needed for rounded edges */
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+@media (max-width: 768px) {
+  .welcome-banner {
+    font-size: 24px; /* Reduce font size for smaller screens */
+    padding: 30px 0;
+  }
 }
