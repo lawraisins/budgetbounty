@@ -15,6 +15,10 @@
     cursor: pointer;
   }
 
+  .register-button:hover {
+    background-color: #574dcc;
+  }
+
   a{
     text-decoration: none;
   }

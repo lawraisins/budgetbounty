@@ -1,14 +1,70 @@
 .rewards-page {
   padding: 80px 20px; /* Adjust padding for banner spacing */
   text-align: center;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; /* Center all items inside rewards-content */
 }
 
-.rewards-page h1{
+.rewards-page h1 {
   font-size: 36px;
 }
 
-.rewards-cards {
+.rewards-content {
   display: flex;
+  flex-direction: column;
+  align-items: center; /* Center all items inside rewards-content */
+  justify-content: center; /* Vertically center items */
+
+}
+
+.points {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  width: 300px; /* Width of the credit card */
+  height: 180px; /* Height of the credit card */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.points h1 {
+  text-align: left;
+  font-size: 64px;
+  margin: 0;
+
+}
+
+.points h3 {
+  text-align: left;
+  margin: 0;
+}
+
+.points h4 {
+  text-align: right;
+  margin: 0;
+}
+
+.points button {
+  margin-top: 10px;
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.points button:hover {
+  background-color: #574dcc;
+}
+
+.reward-cards {
+  display: flex;
+  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
@@ -19,7 +75,7 @@
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 20px;
+  padding: 10px;
   width: 250px;
   text-align: center;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -41,5 +97,19 @@
 }
 
 .reward-card button:hover {
+  background-color: #574dcc;
+}
+
+.all-rewards {
+  margin-top: 30px;
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.all-rewards:hover {
   background-color: #574dcc;
 }
