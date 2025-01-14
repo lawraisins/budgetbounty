@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import "../styles/FormInput.css";
+import view from "../images/icons/view.png";
+import hide from "../images/icons/hide.png";
 
 function FormInput({ label, name, type, value, onChange, placeholder, error }) {
   const [showPassword, setShowPassword] = useState(false);
@@ -10,10 +13,12 @@ function FormInput({ label, name, type, value, onChange, placeholder, error }) {
   const isPasswordField = type === "password";
 
   return (
-    <div>
-      <label>
-        {label}:
+    <div className="form-input">
+  
+      <div className="form-input-container">
+      <label>{label}:</label>
         <input
+          className="form-input-field"
           name={name}
           type={isPasswordField && showPassword ? "text" : type}
           value={value}
@@ -21,21 +26,16 @@ function FormInput({ label, name, type, value, onChange, placeholder, error }) {
           placeholder={placeholder}
           style={{ borderColor: error ? "red" : "black" }}
         />
-      </label>
-      {isPasswordField && (
-        <div>
-          <input
-            type="checkbox"
-            id={`${name}-toggle`}
-            onChange={togglePasswordVisibility}
-            checked={showPassword}
+        {isPasswordField && (
+          <img
+            src={showPassword ? view : hide}
+            alt={showPassword ? "Hide Password" : "Show Password"}
+            style={{ width: "20px", height: "20px", cursor: "pointer" }}
+            onClick={togglePasswordVisibility}
           />
-          <label htmlFor={`${name}-toggle`}>
-            {showPassword ? "Hide" : "Show"} Password
-          </label>
-        </div>
-      )}
-      {error && <span style={{ color: "red" }}>{error}</span>}
+        )}
+      </div>
+      {error && <span className="error">{error}</span>}
     </div>
   );
 }

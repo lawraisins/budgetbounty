@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import FormInput from "./FormInput";
+import "../styles/Register.css";
+
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -85,9 +87,9 @@ const Register = () => {
           error={errors.confirm}
         />
 
-        <button type="submit">Register</button>
+        <button className="register-button"type="submit">Register</button>
       </form>
-      <p>
+      <p className="have-account">
         Have an account? <a href="/login">Log in</a>
       </p>
     </div>

@@ -1,0 +1,31 @@
+/* FormInput.css */
+
+/* General Styling */
+.form-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .form-input-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .form-input-field {
+    padding: 6px;
+    border: 1px solid #ccc;  /* Default border */
+    border-radius: 5px;  /* Rounded corners */
+    margin:0px 5px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+
+  .error{
+    color:red;
+  }
+
+
+  

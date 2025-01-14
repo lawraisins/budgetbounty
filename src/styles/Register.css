@@ -1,0 +1,23 @@
+/* Register.css */
+
+/* General Styling */
+.register-page {
+    padding: 80px 20px; /* Space for fixed navbar */
+    text-align: center;
+  }
+
+  .register-button {
+    background-color: #6c63ff; /* Matches buttons in App.css */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  a{
+    text-decoration: none;
+  }
+  .have-account{
+    color:#6c63ff;
+  }

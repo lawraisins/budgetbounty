@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import FormInput from './FormInput';
+import '../styles/Login.css';
 
 const Login = () => {
   var [formData, setFormData] = useState({
@@ -49,9 +50,9 @@ const Login = () => {
         {/* <label>Username</label> */}
         <FormInput label="Username" name="username" type="text" value={formData.username} placeholder="Enter your username" onChange={(e)=>handleInputChange(e)} error={errors.username}/>
         <FormInput label="Password" name="password" type="password" value={formData.password} placeholder="Enter your password" onChange={(e)=>handleInputChange(e)} error={errors.password}/>
-        <button type="submit">Login</button>
+        <button type="submit" className='login-button'>Login</button>
       </form>
-      <p>New user? <a href="/register">Sign Up</a></p>
+      <p className="new-user">New user? <a href="/register">Sign Up</a></p>
     </div>
   );
 };
