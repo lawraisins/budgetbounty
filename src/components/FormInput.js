@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function FormInput({ label, type, value, onChange, placeholder, error }) {
+function FormInput({ label, name, type, value, onChange, placeholder, error }) {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -14,7 +14,7 @@ function FormInput({ label, type, value, onChange, placeholder, error }) {
       <label>
         {label}:
         <input
-          name={label.toLowerCase()}
+          name={name}
           type={isPasswordField && showPassword ? "text" : type}
           value={value}
           onChange={onChange}
@@ -26,11 +26,11 @@ function FormInput({ label, type, value, onChange, placeholder, error }) {
         <div>
           <input
             type="checkbox"
-            id={`${label}-toggle`}
+            id={`${name}-toggle`}
             onChange={togglePasswordVisibility}
             checked={showPassword}
           />
-          <label htmlFor={`${label}-toggle`}>
+          <label htmlFor={`${name}-toggle`}>
             {showPassword ? "Hide" : "Show"} Password
           </label>
         </div>

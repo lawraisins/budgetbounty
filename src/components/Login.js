@@ -7,38 +7,48 @@ const Login = () => {
     password:'',
   })
 
-  var [error, setError] = useState('')
+  const [errors, setErrors] = useState({
+    username: "",
+    password: "",
+  });
 
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
 
-  var handleInputChange = (event) => {
-    var {name, value} = event.target;
-    setFormData({...formData, [name]:value})
-    // Clear the error if the user starts typing
-    if (error) {
-          setError("");
-        }
-  }
-
-  var handleSubmit = (event) => {
-    event.preventDefault();
-
-    // Check if username or password is blank
-    if (!formData.username || !formData.password) {
-      setError("Username and password cannot be blank.");
-    }
+    // Clear the error for the field being updated
+    setErrors({ ...errors, [name]: "" });
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    let hasError = false;
+    const newErrors = {};
+
+    if (!formData.username) {
+      newErrors.username = "Username cannot be blank.";
+      hasError = true;
+    }
+    if (!formData.password) {
+      newErrors.password = "Password cannot be blank.";
+      hasError = true;
+    }
+    setErrors(newErrors);
+
+    if (!hasError) {
+      console.log("Registration successful!", formData);
+      // Add logic to handle successful registration (e.g., API call, navigation)
+    }
+  };
 
   return (
     <div className="login-page">
       <h1>Login</h1>
       <form onSubmit={handleSubmit}> 
         {/* <label>Username</label> */}
-        <FormInput label="Username" type="text" value={formData.username} placeholder="Enter your username" onChange={(e)=>handleInputChange(e)} error={error}/>
-        {/* <input type="text" placeholder="Enter your username" /> */}
-        <FormInput label="Password" type="password" value={formData.password} placeholder="Enter your password" onChange={(e)=>handleInputChange(e)} error={error}/>
-        {/* <label>Password</label>
-        <input type="password" placeholder="Enter your password" /> */}
+        <FormInput label="Username" name="username" type="text" value={formData.username} placeholder="Enter your username" onChange={(e)=>handleInputChange(e)} error={errors.username}/>
+        <FormInput label="Password" name="password" type="password" value={formData.password} placeholder="Enter your password" onChange={(e)=>handleInputChange(e)} error={errors.password}/>
         <button type="submit">Login</button>
       </form>
       <p>New user? <a href="/register">Sign Up</a></p>
