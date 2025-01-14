@@ -14,7 +14,7 @@
   /* Top Section Styling */
   .dashboard-top {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-bottom: 40px; /*space below dash1 image*/
     padding: 0 20px;
@@ -24,6 +24,7 @@
   .dashboard-text {
     text-align: left;
     max-width: 50%;
+    margin-right: 270px;;
   }
   
   .dashboard-text h2 {
@@ -53,7 +54,7 @@
   .dashboard-image img {
     width: 100%;
     max-width: 400px;
-    border-radius: 10px;
+    border-radius: 7px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   }
   
@@ -73,6 +74,13 @@
     width: 30%;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth hover effect */
+  }
+
+  .card:hover {
+    transform: scale(1.05); /* Slightly magnify the card */
+    background-color: #f0f0f0; /* Change background to light gray */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Enhance the shadow for hover */
   }
   
   .card h3 {
@@ -88,7 +96,7 @@
     width: 100%;
     max-width: 200px;
     margin-bottom: 10px;
-    border-radius: 10px;
+    border-radius: 6px;
   }
   
   /* Responsive Design for Mobile */

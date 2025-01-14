@@ -14,10 +14,13 @@ const Dashboard = () => {
           <p>Count on peace of mind when you make payments. Your transactions are encrypted.</p>
           <button>Learn About PayPal Security</button>
         </div>
+        
         <div className="dashboard-image">
           <img src={dash1} alt="Security Illustration" />
         </div>
+        
       </div>
+
       <div className="dashboard-cards">
         <div className="card">
           <h3>Reward Points</h3>

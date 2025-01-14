@@ -30,10 +30,14 @@ header nav ul li a {
   font-weight: bold;
   font-size: 16px;
   text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+  display: inline-block; /* Ensure the link behaves as a block element for proper hover effects */
 }
 
 header nav ul li a:hover {
-  text-decoration: underline;
+  /*text-decoration: underline;*/
+  transform: scale(1.1); /* Magnify the label slightly */
+  color: pink;/* Optional: Slightly change text color on hover */
 }
 
 /* Responsive Design */
