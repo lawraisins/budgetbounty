@@ -1,35 +1,35 @@
 /* Header.css */
 
-/* Header Container */
 header {
-    background-color: #6c63ff;
-    color: white;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-  }
-  
-  header nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px 0;
-  }
-  
-  header nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-  
-  header nav ul li a {
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-  }
-  
-  header nav ul li a:hover {
-    text-decoration: underline;
-  }
-  
+  background-color: #6c63ff; /* Purple header */
+  color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 10px 20px;
+}
+
+header nav {
+  display: flex;
+  justify-content:center; /* Align items to the right */
+  align-items: center;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px; /* Add space between links */
+  margin: 0;
+}
+
+header nav ul li a {
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+header nav ul li a:hover {
+  text-decoration: underline;
+}

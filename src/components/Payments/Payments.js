@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
+import WelcomeBanner from '../WelcomeBanner';
 import '../../styles/Payments.css';
 
 const Payments = () => {
   return (
     <div className="payments-page">
-      <h1>Manage Payments at Your Fingertips</h1>
+      <WelcomeBanner text="Manage Payments at Your Fingertips" />
       <nav>
         <ul>
           <li><Link to="manage">Manage Payments</Link></li>

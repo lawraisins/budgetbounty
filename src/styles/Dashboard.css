@@ -1,0 +1,118 @@
+/* Dashboard.css */
+
+/* General Styling */
+.dashboard-page {
+    padding: 80px 20px; /* Space for fixed navbar */
+    text-align: center;
+  }
+  
+  .dashboard-page h1 {
+    font-size: 36px; 
+    margin-bottom: 30px; /* kind of changes banner height */
+  }
+  
+  /* Top Section Styling */
+  .dashboard-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px; /*space below dash1 image*/
+    padding: 0 20px;
+    margin-top: 20px; /*space between banner and dash1 image*/
+  }
+  
+  .dashboard-text {
+    text-align: left;
+    max-width: 50%;
+  }
+  
+  .dashboard-text h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .dashboard-text p {
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-text button {
+    background-color: #6c63ff; /* Matches buttons in App.css */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .dashboard-text button:hover {
+    background-color: #574dcc; /* Hover effect */
+  }
+  
+  .dashboard-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Cards Section Styling */
+  .dashboard-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 20px;
+  }
+  
+  .card {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: 30%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .card h3 {
+    color: #6c63ff; /* Matches dashboard heading */
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    color: #555;
+  }
+  
+  .card img {
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+  
+  /* Responsive Design for Mobile */
+  @media (max-width: 768px) {
+    .dashboard-top {
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
+    }
+  
+    .dashboard-text {
+      text-align: center;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .dashboard-cards {
+      flex-direction: column;
+      gap: 20px;
+      padding: 0;
+    }
+  
+    .card {
+      width: 100%;
+    }
+  }
+  

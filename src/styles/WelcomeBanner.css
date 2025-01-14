@@ -1,0 +1,11 @@
+/* WelcomeBanner.css */
+
+.welcome-banner {
+  background-color: #6c63ff; /* Purple background */
+  color: white; /* Text color */
+  text-align: center;
+  padding: 20px;
+  font-size: 32px;
+  margin: 0; /* Ensure no extra spacing */
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
