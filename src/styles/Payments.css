@@ -58,3 +58,92 @@
     background-color: #f9f9f9;
   }
   
+
+  /* Add Payment Form Styling */
+.add-payment-form-container {
+  text-align: center;
+  margin-top: 30px; /* Adjust spacing as needed */
+}
+
+.add-payment-form {
+  display: flex;
+  flex-direction: column; /* Stack inputs vertically */
+  align-items: center; /* Center align the form */
+  gap: 15px; /* Add spacing between inputs */
+  max-width: 400px; /* Limit form width */
+  margin: 0 auto; /* Center the form on the page */
+}
+
+.add-payment-form label {
+  font-weight: bold;
+  text-align: left;
+  width: 100%; /* Make label width match input */
+}
+
+.add-payment-form input,
+.add-payment-form select,
+.add-payment-form button {
+  width: 100%; /* Make inputs take up full width */
+  padding: 10px; /* Add padding for better UI */
+  border-radius: 5px; /* Add rounded edges */
+  border: 1px solid #ccc; /* Add light border */
+  box-sizing: border-box; /* Include padding in width */
+}
+
+.add-payment-form button {
+  background-color: #6c63ff; /* Match theme color */
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
+
+.add-payment-form button:hover {
+  background-color: #574dcc; /* Slightly darker on hover */
+}
+
+/* Add New Account Section */
+.add-account-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between select and button */
+  width: 100%;
+}
+
+.new-account-input {
+  width: 100%;
+  margin-top: -5px;
+}
+
+
+/* Error Message Styling */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-left: 10px; /* Add space between input and error */
+  display: inline-block; /* Aligns error beside the field */
+  vertical-align: middle; /* Align error text with the input field */
+}
+
+.add-payment-form input.error,
+.add-payment-form select.error {
+  border-color: red; /* Highlight the input box with an error */
+}
+
+/* Adjust styling for .add-account-container to align error beside dropdown */
+.add-account-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between select and button */
+  position: relative;
+}
+
+.add-account-container .error-message {
+  position: absolute;
+  top: 50%;
+  right: -200px; /* Adjust positioning for dropdown-specific error */
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+
