@@ -23,13 +23,16 @@
 
   .profile-content{
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .profile-main {
     text-align: left;
-    max-width: 50%;
-    margin-right: 270px;;
+    /* max-width: 50%; */
+
   }
+  
   
   .profile-main button {
     background-color: #6c63ff; /* Matches buttons in App.css */
@@ -38,6 +41,16 @@
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 10px;
+  }
+
+  .profile-main img {
+    width: 300px;
+    height: 300px; /* Set a fixed height for the cropped effect */
+    object-fit: cover; /* This will crop the image while maintaining its aspect ratio */
+    object-position: center; /* Optional: centers the image within the container */
+    border-radius: 300px;
+    overflow: hidden; /* Hides any part of the image outside the container */
   }
   
   .profile-main button:hover {
@@ -48,7 +61,7 @@
   .profile-cards {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 20px;
     padding: 0 20px;
   }
@@ -58,10 +71,12 @@
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 20px;
-    width: 30%;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding/border doesn't cause overflow */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth hover effect */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    overflow: hidden; /* Hide any content spilling out */
   }
 
   .card:hover {

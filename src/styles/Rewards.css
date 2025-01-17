@@ -23,19 +23,20 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   text-align: center;
-  padding: 10px;
+  padding: 20px;
   width: 300px; /* Width of the credit card */
-  height: 180px; /* Height of the credit card */
   display: flex;
   flex-direction: column;
+  justify-content: center; /* Ensures content is centered vertically */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  /* Remove fixed height to allow dynamic sizing */
+  height: 180px; /* Allow the height to adjust based on content */
 }
 
 .points h1 {
   text-align: left;
   font-size: 64px;
   margin: 0;
-
 }
 
 .points h3 {
@@ -62,6 +63,20 @@
   background-color: #574dcc;
 }
 
+.points button {
+  margin-top: 10px;
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.points button:hover {
+  background-color: #574dcc;
+}
+
 .reward-cards {
   display: flex;
   align-items: center;
@@ -69,6 +84,7 @@
   flex-wrap: wrap;
   gap: 20px;
   margin-top: 30px; /* Space below the banner */
+  width:50%;
 }
 
 .reward-card {
