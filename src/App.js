@@ -11,6 +11,7 @@ import AddPayment from './components/Payments/AddPayment';
 import PaymentHistory from './components/Payments/PaymentHistory';
 import Rewards from './components/Rewards/Rewards';
 import MyRewards from './components/Rewards/MyRewards';
+import Profile from './components/Profile';
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
           </Route>
           <Route path="/rewards" element={<Rewards />} />
           <Route path="/rewards/my" element={<MyRewards />} />
+          <Route path="/profile" element={<Profile />}/>
         </Routes>
       </main>
       <Footer />

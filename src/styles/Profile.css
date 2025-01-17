@@ -1,0 +1,113 @@
+/* Dashboard.css */
+
+/* General Styling */
+.profile-page {
+    padding: 80px 20px; /* Space for fixed navbar */
+    text-align: center;
+  }
+  
+  .profile-page h1 {
+    font-size: 36px; 
+    margin-bottom: 30px; /* kind of changes banner height */
+  }
+  
+  /* Top Section Styling */
+  .profile-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px; /*space below dash1 image*/
+    padding: 0 20px;
+    margin-top: 20px; /*space between banner and dash1 image*/
+  }
+
+  .profile-content{
+    display: flex;
+  }
+  
+  .profile-main {
+    text-align: left;
+    max-width: 50%;
+    margin-right: 270px;;
+  }
+  
+  .profile-main button {
+    background-color: #6c63ff; /* Matches buttons in App.css */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .profile-main button:hover {
+    background-color: #574dcc; /* Hover effect */
+  }
+  
+  /* Cards Section Styling */
+  .profile-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 20px;
+  }
+  
+  .card {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: 30%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth hover effect */
+  }
+
+  .card:hover {
+    transform: scale(1.05); /* Slightly magnify the card */
+    background-color: #f0f0f0; /* Change background to light gray */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Enhance the shadow for hover */
+  }
+  
+  .card h3 {
+    color: #6c63ff; /* Matches dashboard heading */
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    color: #555;
+  }
+  
+  .card img {
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+  }
+  
+  /* Responsive Design for Mobile */
+  @media (max-width: 768px) {
+    .dashboard-top {
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
+    }
+  
+    .dashboard-text {
+      text-align: center;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .dashboard-cards {
+      flex-direction: column;
+      gap: 20px;
+      padding: 0;
+    }
+  
+    .card {
+      width: 100%;
+    }
+  }
+  
