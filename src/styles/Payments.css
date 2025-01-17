@@ -30,10 +30,13 @@
     color: #6c63ff;
     padding: 5px 10px;
     border-radius: 5px;
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: inline-block;
   }
   
   .payments-page nav ul li a:hover {
     background-color: #f1f1f1;
+    transform: scale(1.1);
   }
   
   /* Tables */
