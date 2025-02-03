@@ -1,5 +1,24 @@
-/* WelcomeBanner.css */
+/* Reset margins and padding */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+html, body {
+  height: 100%; /* Ensure the page takes full height */
+  width: 100%; /* Ensure full width */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top */
+}
+
+/* Welcome Banner Styling */
 .welcome-banner {
   background-color: #6c63ff; /* Purple background */
   color: white;

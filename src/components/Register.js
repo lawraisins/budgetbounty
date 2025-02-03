@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 import FormInput from "./FormInput";
+import WelcomeBanner from "./WelcomeBanner";
 import "../styles/Register.css";
 
 
 const Register = () => {
   const [formData, setFormData] = useState({
     username: "",
+    firstname: "",
+    lastname: "",
     password: "",
     confirm: "",
   });
 
   const [errors, setErrors] = useState({
     username: "",
+    firstname: "",
+    lastname: "",
     password: "",
     confirm: "",
   });
@@ -32,6 +37,14 @@ const Register = () => {
 
     if (!formData.username) {
       newErrors.username = "Username cannot be blank.";
+      hasError = true;
+    }
+    if (!formData.firstname) {
+      newErrors.firstname = "First name cannot be blank.";
+      hasError = true;
+    }
+    if (!formData.lastname) {
+      newErrors.lastname = "Last name cannot be blank.";
       hasError = true;
     }
     if (!formData.password) {
@@ -57,7 +70,7 @@ const Register = () => {
 
   return (
     <div className="register-page">
-      <h1>Register</h1>
+      <WelcomeBanner text={"Register"}/>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="Username"
@@ -67,6 +80,24 @@ const Register = () => {
           placeholder="Enter your username"
           onChange={handleInputChange}
           error={errors.username}
+        />
+        <FormInput
+          label="First Name"
+          name="firstname"
+          type="text"
+          value={formData.firstname}
+          placeholder="Enter your first name"
+          onChange={handleInputChange}
+          error={errors.firstname}
+        />
+        <FormInput
+          label="Last Name"
+          name="lastname"
+          type="text"
+          value={formData.lastname}
+          placeholder="Enter your last name"
+          onChange={handleInputChange}
+          error={errors.lastname}
         />
         <FormInput
           label="Password"
@@ -82,12 +113,12 @@ const Register = () => {
           name="confirm"
           type="password"
           value={formData.confirm}
-          placeholder="Enter your password"
+          placeholder="Re-enter your password"
           onChange={handleInputChange}
           error={errors.confirm}
         />
 
-        <button className="register-button"type="submit">Register</button>
+        <button className="login-button"type="submit">Register</button>
       </form>
       <p className="have-account">
         Have an account? <a href="/login">Log in</a>
