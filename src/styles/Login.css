@@ -10,7 +10,8 @@
     background-color: #6c63ff; /* Matches buttons in App.css */
     color: white;
     border: none;
-    padding: 5px 10px;
+    font-size: 16px;
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
   }

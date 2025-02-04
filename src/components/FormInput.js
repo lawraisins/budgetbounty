@@ -14,9 +14,8 @@ function FormInput({ label, name, type, value, onChange, placeholder, error }) {
 
   return (
     <div className="form-input">
-  
+      <label>{label}</label>
       <div className="form-input-container">
-      <label>{label}:</label>
         <input
           className="form-input-field"
           name={name}
@@ -27,7 +26,7 @@ function FormInput({ label, name, type, value, onChange, placeholder, error }) {
           style={{ borderColor: error ? "red" : "black" }}
         />
         {isPasswordField && (
-          <img
+          <img className="form-icon"
             src={showPassword ? view : hide}
             alt={showPassword ? "Hide Password" : "Show Password"}
             style={{ width: "20px", height: "20px", cursor: "pointer" }}
