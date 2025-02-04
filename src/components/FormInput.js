@@ -13,7 +13,7 @@ function FormInput({ label, name, type, value, onChange, placeholder, error }) {
   const isPasswordField = type === "password";
 
   return (
-    <div className="form-input">
+    <div className="form-input-login">
       <label>{label}</label>
       <div className="form-input-container">
         <input

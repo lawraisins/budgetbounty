@@ -1,5 +1,5 @@
-/* General Styling */
-.form-input {
+/* Target only .form-input-login to avoid affecting other forms */
+.form-input-login {
   display: flex;
   flex-direction: column;
   align-items: center; /* Keep inputs centered */
@@ -7,20 +7,20 @@
   width: 100%;
 }
 
-label {
+.form-input-login label {
   margin-bottom: 5px;
   font-size: 20px;
   text-align: left; /* Align label text to the left */
-  width: 100%; /* Ensure the label stretches full width */
-  max-width: 30%; /* Match the input field width */
+  width: 100%;
+  max-width: 30%;
 }
 
 .form-input-container {
   position: relative;
-  width: 30%; /* Keep input field and icon centered */
+  width: 30%;
 }
 
-.form-input-field {
+.form-input-login .form-input-field {
   padding: 10px;
   padding-right: 30px;
   border: 1px solid #ccc;
@@ -28,20 +28,19 @@ label {
   font-size: 14px;
   outline: none;
   transition: border-color 0.3s ease;
-  width: 100%; /* Ensure input stays within container */
+  width: 100%;
   text-align: left;
 }
 
-
-.error {
+.form-input-login .error {
   color: red;
 }
 
-.form-icon {
-  position: absolute; /* Absolutely position the icon inside the input */
-  right: 10px; /* Adjust the position of the icon inside the input */
-  top: 50%; /* Vertically center the icon */
-  transform: translateY(-50%); /* Adjust the vertical centering */
+.form-input-login .form-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 20px;
   height: 20px;
   cursor: pointer;
