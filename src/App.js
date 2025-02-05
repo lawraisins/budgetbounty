@@ -8,6 +8,7 @@ import Register from './components/Register';
 import Payments from './components/Payments/Payments';
 import ManagePayments from './components/Payments/ManagePayments';
 import AddPayment from './components/Payments/AddPayment';
+import AddBill from "./components/Payments/AddBill";
 import PaymentHistory from './components/Payments/PaymentHistory';
 import Rewards from './components/Rewards/Rewards';
 import MyRewards from './components/Rewards/MyRewards';
@@ -39,6 +40,7 @@ const Layout = () => {
             <Route index element={<ManagePayments />} />
             <Route path="manage" element={<ManagePayments />} />
             <Route path="add" element={<AddPayment />} />
+            <Route path="add-bill" element={<AddBill />} />
             <Route path="history" element={<PaymentHistory />} />
           </Route>
           <Route path="/rewards" element={isAuthenticated ? <Rewards /> : <Login />} />

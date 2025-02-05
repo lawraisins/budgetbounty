@@ -10,6 +10,7 @@ const Payments = () => {
       <nav>
         <ul>
           <li><Link to="manage">Manage Payments</Link></li>
+          <li><Link to="add-bill">Add Bills</Link></li>
           <li><Link to="add">Add New Payment</Link></li>
           <li><Link to="history">Payment History</Link></li>
         </ul>

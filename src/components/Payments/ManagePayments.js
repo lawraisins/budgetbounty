@@ -8,7 +8,7 @@ const ManagePayments = () => {
         <thead>
           <tr>
             <th>Bill Name</th>
-            <th>Date of Payment</th>
+            <th>Due Date</th>
             <th>Amount</th>
             <th>Status</th>
           </tr>
@@ -18,13 +18,13 @@ const ManagePayments = () => {
             <td>Rent</td>
             <td>17/04/2024</td>
             <td>$950.00</td>
-            <td>Pending</td>
+            <td>Unpaid</td>
           </tr>
           <tr>
             <td>Utilities</td>
             <td>22/04/2024</td>
             <td>$220.00</td>
-            <td>Pending</td>
+            <td>Unpaid</td>
           </tr>
         </tbody>
       </table>

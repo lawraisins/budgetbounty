@@ -5,64 +5,68 @@ const AddPayment = () => {
     billName: "",
     billAmount: "",
     bankAccount: "",
-    recurrence: "",
-    startDate: "",
   });
 
   const [errors, setErrors] = useState({});
   const [showNewAccountInput, setShowNewAccountInput] = useState(false);
 
+  // Hardcoded Bill Options (Replace this with API later)
+  const billOptions = [
+    { billId: 1, billName: "Rent", amount: 950.00 },
+    { billId: 2, billName: "Utilities", amount: 220.00 },
+    { billId: 3, billName: "Internet", amount: 50.00 }
+  ];
+
+  // Handle input change
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+
+    // Auto-fill bill amount when bill name is selected
+    if (name === "billName") {
+      const selectedBill = billOptions.find((bill) => bill.billName === value);
+      if (selectedBill) {
+        setFormValues((prev) => ({ ...prev, billAmount: selectedBill.amount }));
+      }
+    }
+
+    setErrors({ ...errors, [name]: "" }); // Clear error when user types
+  };
+
+  // Show new bank account input
   const handleAddAccountClick = () => {
     setShowNewAccountInput(true);
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues({ ...formValues, [name]: value });
-    setErrors({ ...errors, [name]: "" }); // Clear the error when the user types
-  };
-
+  // Validate form before submission
   const validate = () => {
     const newErrors = {};
 
     if (!formValues.billName.trim()) {
-      newErrors.billName = "Bill Name cannot be empty";
+      newErrors.billName = "Please select a bill";
     }
 
-    if (!formValues.billAmount.trim()) {
+    if (!formValues.billAmount) {
       newErrors.billAmount = "Bill Amount cannot be empty";
-    } else if (parseFloat(formValues.billAmount) < 1) {
-      newErrors.billAmount = "Bill Amount must be at least $1";
     }
 
     if (!formValues.bankAccount.trim() || formValues.bankAccount === "select-account") {
       newErrors.bankAccount = "Please select a bank account";
     }
 
-    if (!formValues.recurrence.trim() || formValues.recurrence === "select-recurrence") {
-      newErrors.recurrence = "Please select a recurrence";
-    }
-
-    if (!formValues.startDate.trim()) {
-      newErrors.startDate = "Start Date cannot be empty";
-    }
-
     setErrors(newErrors);
-
-    return Object.keys(newErrors).length === 0; // Return true if no errors
+    return Object.keys(newErrors).length === 0;
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      alert("Form submitted successfully!");
-      // Clear form after submission
+      alert("Payment added successfully!");
       setFormValues({
         billName: "",
         billAmount: "",
         bankAccount: "",
-        recurrence: "",
-        startDate: "",
       });
       setShowNewAccountInput(false);
     }
@@ -74,14 +78,19 @@ const AddPayment = () => {
       <form className="add-payment-form" onSubmit={handleSubmit}>
         <label>
           Bill Name
-          <input
-            type="text"
-            placeholder="Enter Bill Name"
+          <select
             name="billName"
             value={formValues.billName}
             onChange={handleChange}
             className={errors.billName ? "error" : ""}
-          />
+          >
+            <option value="">Select a bill</option>
+            {billOptions.map((bill) => (
+              <option key={bill.billId} value={bill.billName}>
+                {bill.billName}
+              </option>
+            ))}
+          </select>
           {errors.billName && <span className="error-message">{errors.billName}</span>}
         </label>
 
@@ -89,13 +98,11 @@ const AddPayment = () => {
           Bill Amount
           <input
             type="number"
-            placeholder="Enter Amount"
+            placeholder="Auto-filled amount"
             name="billAmount"
             value={formValues.billAmount}
-            onChange={handleChange}
-            className={errors.billAmount ? "error" : ""}
+            readOnly
           />
-          {errors.billAmount && <span className="error-message">{errors.billAmount}</span>}
         </label>
 
         <label>
@@ -119,41 +126,8 @@ const AddPayment = () => {
         </label>
 
         {showNewAccountInput && (
-          <input
-            type="text"
-            className="new-account-input"
-            placeholder="Enter New Account Number"
-          />
+          <input type="text" className="new-account-input" placeholder="Enter New Account Number" />
         )}
-
-        <label>
-          Recurring Payment
-          <select
-            name="recurrence"
-            value={formValues.recurrence}
-            onChange={handleChange}
-            className={errors.recurrence ? "error" : ""}
-          >
-            <option value="select-recurrence">Select recurrence</option>
-            <option value="None">None</option>
-            <option value="Daily">Daily</option>
-            <option value="Weekly">Weekly</option>
-            <option value="Monthly">Monthly</option>
-          </select>
-          {errors.recurrence && <span className="error-message">{errors.recurrence}</span>}
-        </label>
-
-        <label>
-          Start Date
-          <input
-            type="date"
-            name="startDate"
-            value={formValues.startDate}
-            onChange={handleChange}
-            className={errors.startDate ? "error" : ""}
-          />
-          {errors.startDate && <span className="error-message">{errors.startDate}</span>}
-        </label>
 
         <button type="submit">Submit</button>
       </form>
