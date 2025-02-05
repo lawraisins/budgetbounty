@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import FormInput from './FormInput';
 import WelcomeBanner from './WelcomeBanner';
@@ -25,34 +26,41 @@ const Login = () => {
     setErrors({ ...errors, [name]: '' });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     let hasError = false;
     const newErrors = {};
-
+  
     if (!formData.username) {
-      newErrors.username = 'Username cannot be blank.';
+      newErrors.username = "Username cannot be blank.";
       hasError = true;
     }
-
+  
     if (!formData.password) {
-      newErrors.password = 'Password cannot be blank.';
+      newErrors.password = "Password cannot be blank.";
       hasError = true;
     }
-
-    // Check if the username and password match the dummy account
-    if (formData.username !== 'hcl' || formData.password !== 'password') {
-      newErrors.username = 'Invalid username or password.';
-      hasError = true;
-    }
-
+  
     setErrors(newErrors);
-
-    if (!hasError) {
-      console.log('Login successful!', formData);
+    if (hasError) return;
+  
+    try {
+      console.log("Logging in...");
+      const response = await axios.post("http://localhost:8087/auth/login", {
+        username: formData.username,
+        password: formData.password,
+      });
+  
+      console.log("Login successful!", response.data);
       localStorage.setItem("isAuthenticated", "true");
-      navigate('/'); // Navigate to the Dashboard page upon successful login
+      navigate("/"); // Redirect to dashboard
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        setErrors({ username: "Invalid username or password." });
+      } else {
+        console.error("Login failed:", error);
+      }
     }
   };
 
