@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import FormInput from "./FormInput";
 import WelcomeBanner from "./WelcomeBanner";
 import "../styles/Register.css";
@@ -29,12 +30,12 @@ const Register = () => {
     setErrors({ ...errors, [name]: "" });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     let hasError = false;
     const newErrors = {};
-
+  
     if (!formData.username) {
       newErrors.username = "Username cannot be blank.";
       hasError = true;
@@ -52,21 +53,47 @@ const Register = () => {
       hasError = true;
     }
     if (!formData.confirm) {
-      newErrors.confirm = "Confim password cannot be blank.";
+      newErrors.confirm = "Confirm password cannot be blank.";
       hasError = true;
     }
     if (formData.password !== formData.confirm) {
       newErrors.confirm = "Passwords do not match.";
       hasError = true;
     }
-
+  
     setErrors(newErrors);
-
+  
     if (!hasError) {
-      console.log("Registration successful!", formData);
-      // Add logic to handle successful registration (e.g., API call, navigation)
+      try {
+        const response = await axios.post(
+          "http://localhost:8087/auth/register",
+          {
+            username: formData.username,
+            firstName: formData.firstname,
+            lastName: formData.lastname,
+            password: formData.password,
+          },
+          {
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+  
+        console.log("Registration successful!", response.data);
+        alert("Registration successful! You can now log in.");
+        setFormData({
+          username: "",
+          firstname: "",
+          lastname: "",
+          password: "",
+          confirm: "",
+        });
+      } catch (error) {
+        console.error("Registration failed:", error.response?.data || error.message);
+        alert("Registration failed! Please try again.");
+      }
     }
   };
+  
 
   return (
     <div className="register-page">
