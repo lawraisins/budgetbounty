@@ -10,7 +10,7 @@ const Dashboard = () => {
   const [totalPoints, setTotalPoints] = useState(0);
 
   useEffect(() => {
-    const userId = 1; // Get userId from local storage
+    const userId = localStorage.getItem("userId"); // Get userId from local storage
 
     if (userId) {
       axios.get(`http://localhost:8087/auth/${userId}`)

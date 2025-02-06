@@ -54,6 +54,7 @@ const Login = () => {
   
       console.log("Login successful!", response.data);
       localStorage.setItem("isAuthenticated", "true");
+      localStorage.setItem("userId", response.data); // Store userId in localStorage
       navigate("/"); // Redirect to dashboard
     } catch (error) {
       if (error.response && error.response.status === 400) {
@@ -63,7 +64,6 @@ const Login = () => {
       }
     }
   };
-
   return (
     <div className="login-page">
       <WelcomeBanner text={"Log In"} />

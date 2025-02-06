@@ -11,7 +11,7 @@ const Profile = () => {
   const [fullName, setFullName] = useState("User");
 
   useEffect(() => {
-    const userId = 1; // Retrieve userId from localStorage
+    const userId = localStorage.getItem("userId"); // Retrieve userId from localStorage
 
     if (userId) {
       axios.get(`http://localhost:8087/auth/${userId}`)
