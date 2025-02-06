@@ -83,8 +83,8 @@
   margin-bottom: 10px;
 }
 
-.rewards-button {
-  margin-top: 10px;
+.reward-card button {
+  margin-top: 30px;
   background-color: #6c63ff;
   color: white;
   border: none;
@@ -156,10 +156,9 @@
   background-color: #574dcc;
 }
 
-.modal-content button:nth-child(2) {
-  background-color: #ccc;
-}
-
-.modal-content button:nth-child(2):hover {
-  background-color: #999;
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Adds space between buttons */
+  margin-top: 10px;
 }

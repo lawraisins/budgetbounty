@@ -42,7 +42,7 @@ const MyRewards = () => {
         </div>
 
         <Link to="/rewards">
-          <button className="rewards-button">Return to Rewards</button>
+          <button className="all-rewards">Return to Rewards</button>
         </Link>
       </div>
     </div>

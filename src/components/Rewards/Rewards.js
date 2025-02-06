@@ -11,8 +11,10 @@ const Modal = ({ reward, onConfirm, onCancel }) => {
       <div className="modal-content">
         <h2>Confirm Redemption</h2>
         <p>Are you sure you want to redeem {reward.name} for {reward.points} points?</p>
+        <div className="modal-buttons">
         <button onClick={onConfirm}>Confirm</button>
         <button onClick={onCancel}>Cancel</button>
+      </div>
       </div>
     </div>
   );
@@ -55,7 +57,7 @@ const Rewards = () => {
           Browse the options below to redeem your points!
         </p>
         <RewardsCard />
-        <Link to="/rewards/my"><button className="rewards-button">View My Rewards</button></Link>
+        <Link to="/rewards/my"><button className="all-rewards">View My Rewards</button></Link>
         
         {/* Example reward items */}
         <div className="reward-cards">
