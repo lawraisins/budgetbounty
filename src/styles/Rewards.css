@@ -164,5 +164,20 @@
 }
 
 .reward-points-card {
-  margin: 20px
+  margin: 20px;
+  flex-direction: row;
+}
+
+.reward-points-card {
+  display: flex; /* Use flexbox to arrange children in a row */
+  align-items: center; /* Vertically center the items */
+  justify-content: center; /* Horizontally center the items */
+  gap: 20px; /* Add spacing between the card and the image */
+}
+
+.rewards-image img {
+  width: 100%;
+  max-width: 400px; /* Limit the image size */
+  border-radius: 7px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }

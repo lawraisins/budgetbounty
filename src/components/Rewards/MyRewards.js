@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import WelcomeBanner from '../WelcomeBanner'; // Adjust the path as needed
 import '../../styles/Rewards.css'; // Adjust the path as needed
+import RewardsCard from './RewardsCard';
 
 const MyRewards = () => {
   const [myRewards, setMyRewards] = useState([]);
@@ -18,12 +19,11 @@ const MyRewards = () => {
 
   return (
     <div className="rewards-page">
-      {/* Welcome Banner */}
-      <WelcomeBanner text="Earn and Redeem Rewards on the Go!" />
 
       {/* Rewards Content */}
       <div className="rewards-content">
         <h1>My Rewards</h1>
+        <RewardsCard />
 
         {/* My Rewards displayed in reward-cards format */}
         <div className="reward-cards">
