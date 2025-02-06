@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import WelcomeBanner from '../WelcomeBanner';
 import RewardsCard from './RewardsCard';
 import image from '../../images/rewards.jpg';
 import '../../styles/Rewards.css';
@@ -73,6 +71,7 @@ const RewardsCatalogue = () => {
     <div className="rewards-page">
       
       <div className="rewards-content">
+        <h1>Rewards Catalogue</h1>
         <div className='reward-points-card'>
           <div className="rewards-image">
             <img src={image} alt="Thumbs Up Illustration" />
@@ -96,10 +95,6 @@ const RewardsCatalogue = () => {
             <option value="affordable">Affordable (Within My Points)</option>
           </select>
         </div>
-
-        <Link to="/rewards/my">
-          <button className="all-rewards">View My Rewards</button>
-        </Link>
 
         <div className="reward-cards">
           {(showAllRewards ? filteredRewards : filteredRewards.slice(0, 3)).map((reward) => (
