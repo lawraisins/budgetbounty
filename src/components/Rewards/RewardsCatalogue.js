@@ -25,7 +25,7 @@ const RewardsCatalogue = () => {
   const [redeemedRewards, setRedeemedRewards] = useState([]);
   const [showAllRewards, setShowAllRewards] = useState(false);
   const [sortOption, setSortOption] = useState('');
-  const [userPoints, setUserPoints] = useState(50); // Example user points (Replace with actual data)
+  const [userPoints, setUserPoints] = useState(0); // Points state received from RewardsCard
 
   useEffect(() => {
     fetch('http://localhost:8087/rewards/all')
@@ -59,7 +59,7 @@ const RewardsCatalogue = () => {
       case 'alpha-desc':
         return b.rewardName.localeCompare(a.rewardName);
       case 'affordable':
-        return a.pointsRequired - b.pointsRequired; // Prioritizing lowest-cost rewards first
+        return a.pointsRequired - b.pointsRequired;
       default:
         return 0;
     }
@@ -71,15 +71,15 @@ const RewardsCatalogue = () => {
 
   return (
     <div className="rewards-page">
-      <WelcomeBanner text="Earn and Redeem Rewards on the Go!" />
-
+      
       <div className="rewards-content">
-      <div className='reward-points-card'>
-      <div className="rewards-image">
-          <img src={image} alt="Thumbs Up Illustration" />
+        <div className='reward-points-card'>
+          <div className="rewards-image">
+            <img src={image} alt="Thumbs Up Illustration" />
+          </div>
+          <RewardsCard setPoints={setUserPoints} /> {/* Pass setPoints function to update userPoints */}
         </div>
-        <RewardsCard />
-      </div>
+
         <p>
           Use your reward points to unlock exclusive deals and discounts.
           Browse the options below to redeem your points!

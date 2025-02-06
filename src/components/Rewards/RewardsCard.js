@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../../styles/Rewards.css'; // Adjust the path as needed
+import '../../styles/Rewards.css';
 
-const RewardsCard = () => {
-  const [points, setPoints] = useState(0);
+const RewardsCard = ({ setPoints }) => {
+  const [points, setLocalPoints] = useState(0);
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");  // Get userId from local storage
@@ -12,18 +12,19 @@ const RewardsCard = () => {
       axios.get(`http://localhost:8087/auth/${userId}`)
         .then(response => {
           if (response.data) {
-            setPoints(response.data.totalPoints || 0);
+            const totalPoints = response.data.totalPoints || 0;
+            setLocalPoints(totalPoints);  // Update local points
+            setPoints(totalPoints);       // Update points in parent
           }
         })
         .catch(error => console.error("Error fetching user data:", error));
     }
-  }, []);
+  }, [setPoints]);
 
-  // Function to determine background color based on points
   const getPointsBackgroundColor = (points) => {
     if (points > 250) return 'linear-gradient(to right, #ffd700, #ffac33, #ffc107)';
-    if (points >= 100) return 'linear-gradient(to right, #c0c0c0, #d9d9d9)'; // Silver gradient
-    else return 'linear-gradient(to right, #ffffff, #f0f0f0)'; // Gold gradient
+    if (points >= 100) return 'linear-gradient(to right, #c0c0c0, #d9d9d9)';
+    else return 'linear-gradient(to right, #ffffff, #f0f0f0)';
   };
 
   const getMembershipTier = (points) => {
@@ -33,11 +34,8 @@ const RewardsCard = () => {
   };
 
   return (
-    <div
-      className="points"
-      style={{ background: getPointsBackgroundColor(points) }} // Corrected here
-    >
-      <h4>{getMembershipTier(points)} Member</h4> {/* Corrected here */}
+    <div className="points" style={{ background: getPointsBackgroundColor(points) }}>
+      <h4>{getMembershipTier(points)} Member</h4>
       <h1>{points}</h1>
       <h3>Points</h3>
     </div>
