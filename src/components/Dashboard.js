@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/Dashboard.css';
 import WelcomeBanner from './WelcomeBanner';
+import RewardsCard from './Rewards/RewardsCard';
 import dash1 from '../images/dash1.jpg';
 import dash2 from '../images/dash2.jpg';
 
@@ -41,9 +42,9 @@ const Dashboard = () => {
       <WelcomeBanner text={`Welcome to Budget Bounty, ${firstName}`} />
       <div className="dashboard-top">
         <div className="dashboard-text">
-          <h2>Pay it safe with built-in security</h2>
-          <p>Count on peace of mind when you make payments. Your transactions are encrypted.</p>
-          <button>Learn About PayPal Security</button>
+          <h2>Pay and Earn Rewards!</h2>
+          <p>Track your bills, make payments on time and get rewarded! Rewards earned can be used to redeem gifts issued by BudgetBounty's official partners.</p>
+          <button>Get Started with Bill Management Today</button>
         </div>
         
         <div className="dashboard-image">
@@ -54,7 +55,9 @@ const Dashboard = () => {
       <div className="dashboard-cards">
         <div className="card">
           <h3>Reward Points</h3>
-          <p>{totalPoints}</p>
+          <div className='reward-points-card'>
+            <RewardsCard />
+          </div>
         </div>
         
         <div className="card">
