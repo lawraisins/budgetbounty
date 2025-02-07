@@ -156,5 +156,50 @@
   align-items: center;
 }
 
+/*DROPDOWN DESIGN !!!! */
+/* Styling for the Sort Dropdown */
+.sort-controls select {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid gray; /* Match theme color */
+  border-radius: 5px;
+  background-color: white;
+  color: #6c63ff;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.sort-controls select:hover {
+  /* background-color: #6c63ff; */
+  /* color: black; */
+}
+
+/* Make dropdown align properly */
+.bill-headers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Add spacing for better readability */
+.bill-headers h2 {
+  margin: 0;
+}
+
+/* Responsive design: Keep the dropdown aligned properly */
+@media screen and (max-width: 768px) {
+  .bill-headers {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sort-controls select {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
 
 

@@ -57,12 +57,14 @@ const ManagePayments = () => {
     <div>
       {/* Upcoming Bills Section */}
       <div className="bill-headers">
-        <h2>Upcoming Bills</h2>
+      <h2>Upcoming Bills</h2>
+      <div className="sort-controls">
         <select value={sortOptionUnpaid} onChange={(e) => setSortOptionUnpaid(e.target.value)}>
           <option value="asc">Ascending (Oldest First)</option>
           <option value="desc">Descending (Newest First)</option>
         </select>
       </div>
+    </div>
       <table border="1">
         <thead>
           <tr>
@@ -93,10 +95,12 @@ const ManagePayments = () => {
       {/* Recurring Bills Section */}
       <div className="bill-headers">
         <h2>Recurring Bills</h2>
+        <div className="sort-controls">
         <select value={sortOptionRecurring} onChange={(e) => setSortOptionRecurring(e.target.value)}>
           <option value="asc">Ascending (Oldest First)</option>
           <option value="desc">Descending (Newest First)</option>
         </select>
+        </div>
       </div>
       <table border="1">
         <thead>
