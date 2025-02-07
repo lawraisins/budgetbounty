@@ -8,7 +8,7 @@ import dash2 from '../images/dash2.jpg';
 const Dashboard = () => {
   const [firstName, setFirstName] = useState('User');
   const [totalPoints, setTotalPoints] = useState(0);
-  const [nextPayments, setNextPayments] = useState([]); // ✅ Change to an array to store multiple bills
+  const [nextPayments, setNextPayments] = useState([]); // Change to an array to store multiple bills
 
   useEffect(() => {
     const userId = localStorage.getItem("userId"); // Get userId from local storage
@@ -29,7 +29,7 @@ const Dashboard = () => {
           if (response.data.length > 0) {
             // Sort bills by due date (earliest first)
             const sortedBills = response.data.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
-            setNextPayments(sortedBills.slice(0, 3)); // ✅ Store up to 3 bills
+            setNextPayments(sortedBills.slice(0, 3)); // Store up to 3 bills
           }
         })
         .catch(error => console.error("Error fetching next payment:", error));
