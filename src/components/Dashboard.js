@@ -63,10 +63,17 @@ const Dashboard = () => {
         <div className="card">
           <h3>Bills Due within Next 10 Days</h3>
           {nextPayments.length > 0 ? (
-            <ul className="no-bullets" style={{ listStyleType: "none", padding: 20, margin: 0 }}>
+            <ul className="no-bullets" style={{ listStyleType: "none", padding: 35, margin: 0 }}>
             {nextPayments.map((bill, index) => (
               // <li key={index}>{bill.billName} - {new Date(bill.dueDate).toLocaleDateString()}</li>
-              <li key={index}>{bill.billName} : ${bill.amount} - {new Date(bill.dueDate).toLocaleDateString()}</li>
+              // <li key={index}>{bill.billName} : ${bill.amount} - {new Date(bill.dueDate).toLocaleDateString()}</li>
+              <li key={index}>
+                {bill.billName} : ${bill.amount} - {new Date(bill.dueDate).toLocaleDateString('en-GB', { 
+                  day: '2-digit', 
+                  month: 'short', 
+                  year: '2-digit' 
+                }).replace(',', ' -')}
+              </li>
             ))}
           </ul>
           ) : (
