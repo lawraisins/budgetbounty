@@ -46,6 +46,13 @@ const ManagePayments = () => {
     });
   };
 
+  // Function to add 1 month (or 30 days) for Recurring Bills
+  const getNextPaymentDate = (dateString) => {
+    let date = new Date(dateString);
+    date.setMonth(date.getMonth() + 1); // Move by 1 month
+    return formatDate(date.toISOString()); // Format new date
+  };
+
   return (
     <div>
       {/* Upcoming Bills Section */}
@@ -105,7 +112,7 @@ const ManagePayments = () => {
             sortedRecurringBills.map((bill) => (
               <tr key={bill.billId}>
                 <td>{bill.billName}</td>
-                <td>{formatDate(bill.dueDate)}</td>
+                <td>{getNextPaymentDate(bill.dueDate)}</td> {/* Next Payment Date Updated */}
                 <td>${bill.amount.toFixed(2)}</td>
                 <td>{bill.recurring ? "Yes" : "No"}</td>
               </tr>
