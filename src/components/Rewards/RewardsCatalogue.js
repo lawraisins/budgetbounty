@@ -16,6 +16,9 @@ const Modal = ({ reward, onConfirm, onCancel }) => (
   </div>
 );
 
+
+
+
 const RewardsCatalogue = () => {
   const [rewards, setRewards] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -38,9 +41,40 @@ const RewardsCatalogue = () => {
   };
 
   const handleConfirm = () => {
-    setRedeemedRewards([...redeemedRewards, selectedReward.rewardId]);
-    setIsModalOpen(false);
+    const userId = localStorage.getItem('userId');    
+    if (!userId) {
+      alert("User not logged in");
+      setIsModalOpen(false);
+      return;
+    }
+  
+    fetch(`http://localhost:8087/redemptions/redeem?userId=${userId}&rewardId=${selectedReward.rewardId}`, {
+      method: 'POST',
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data) {
+        alert('Redemption successful!');
+        setRedeemedRewards([...redeemedRewards, selectedReward.rewardId]);
+        
+        // Update points after redemption
+        const updatedPoints = data.user.totalPoints;  // Get updated points from response
+        setUserPoints(updatedPoints); // Update the points in frontend state
+  
+        // Optionally, you can also directly update the user's points locally:
+        // setUserPoints(prevPoints => prevPoints - selectedReward.pointsRequired); 
+  
+        // Hide modal after redemption
+        setIsModalOpen(false);
+      }
+    })
+    .catch(error => {
+      console.error('Error redeeming reward:', error);
+      alert('Failed to redeem reward');
+      setIsModalOpen(false);
+    });
   };
+  
 
   const handleCancel = () => {
     setIsModalOpen(false);
