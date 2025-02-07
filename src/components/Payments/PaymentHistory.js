@@ -13,6 +13,16 @@ const PaymentHistory = () => {
       .catch((error) => console.error("Error fetching payments:", error));
   }, [userId]);
 
+  // Function to format date as "DD MMM YY"
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "2-digit",
+    });
+  };
+
   return (
     <div>
       <h2>Payment History</h2>
@@ -30,7 +40,7 @@ const PaymentHistory = () => {
             payments.map((payment) => (
               <tr key={payment.paymentId}>
                 <td>{payment.bill.billName}</td>
-                <td>{payment.paymentDate}</td>
+                <td>{formatDate(payment.paymentDate)}</td> {/* Formatted Date */}
                 <td>${payment.paymentAmount.toFixed(2)}</td>
                 <td>{payment.bill.billStatus}</td>
               </tr>

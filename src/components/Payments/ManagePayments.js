@@ -5,9 +5,9 @@ const ManagePayments = () => {
   const [recurringBills, setRecurringBills] = useState([]);
   const userId = localStorage.getItem("userId");
 
-  const [sortOptionUnpaid, setSortOptionUnpaid] = useState('asc'); // Sorting for unpaid bills
-  const [sortOptionRecurring, setSortOptionRecurring] = useState('asc'); // Sorting for recurring bills
-//fillercomment
+  const [sortOptionUnpaid, setSortOptionUnpaid] = useState("asc"); // Sorting for unpaid bills
+  const [sortOptionRecurring, setSortOptionRecurring] = useState("asc"); // Sorting for recurring bills
+
   useEffect(() => {
     if (!userId) return;
 
@@ -22,30 +22,35 @@ const ManagePayments = () => {
       .catch((error) => console.error("Error fetching recurring bills:", error));
   }, [userId]);
 
-  const sortedUnpaidBills = unpaidBills.sort((a, b) => {
+  const sortedUnpaidBills = [...unpaidBills].sort((a, b) => {
     const dateA = new Date(a.dueDate);
     const dateB = new Date(b.dueDate);
 
-    return sortOptionUnpaid === 'asc'
-      ? dateA - dateB
-      : dateB - dateA;
+    return sortOptionUnpaid === "asc" ? dateA - dateB : dateB - dateA;
   });
 
-  const sortedRecurringBills = recurringBills.sort((a, b) => {
+  const sortedRecurringBills = [...recurringBills].sort((a, b) => {
     const dateA = new Date(a.dueDate);
     const dateB = new Date(b.dueDate);
 
-    return sortOptionRecurring === 'asc'
-      ? dateA - dateB
-      : dateB - dateA;
+    return sortOptionRecurring === "asc" ? dateA - dateB : dateB - dateA;
   });
+
+  // Function to format date as "DD MMM YY"
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "2-digit",
+    });
+  };
 
   return (
     <div>
+      {/* Upcoming Bills Section */}
       <div className="bill-headers">
-      <h2>Upcoming Bills</h2>
-      <div className="sort-controls">
-      </div>
+        <h2>Upcoming Bills</h2>
         <select value={sortOptionUnpaid} onChange={(e) => setSortOptionUnpaid(e.target.value)}>
           <option value="asc">Ascending (Oldest First)</option>
           <option value="desc">Descending (Newest First)</option>
@@ -65,7 +70,7 @@ const ManagePayments = () => {
             sortedUnpaidBills.map((bill) => (
               <tr key={bill.billId}>
                 <td>{bill.billName}</td>
-                <td>{bill.dueDate}</td>
+                <td>{formatDate(bill.dueDate)}</td>
                 <td>${bill.amount.toFixed(2)}</td>
                 <td>{bill.billStatus}</td>
               </tr>
@@ -77,10 +82,10 @@ const ManagePayments = () => {
           )}
         </tbody>
       </table>
-      <div className="bill-headers"> 
-      <h2>Recurring Bills</h2>
-      <div className="sort-controls">
-      </div>
+
+      {/* Recurring Bills Section */}
+      <div className="bill-headers">
+        <h2>Recurring Bills</h2>
         <select value={sortOptionRecurring} onChange={(e) => setSortOptionRecurring(e.target.value)}>
           <option value="asc">Ascending (Oldest First)</option>
           <option value="desc">Descending (Newest First)</option>
@@ -100,9 +105,9 @@ const ManagePayments = () => {
             sortedRecurringBills.map((bill) => (
               <tr key={bill.billId}>
                 <td>{bill.billName}</td>
-                <td>{bill.dueDate}</td>
+                <td>{formatDate(bill.dueDate)}</td>
                 <td>${bill.amount.toFixed(2)}</td>
-                <td>{bill.recurring ? 'Yes' : 'No'}</td>
+                <td>{bill.recurring ? "Yes" : "No"}</td>
               </tr>
             ))
           ) : (
