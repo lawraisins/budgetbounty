@@ -112,10 +112,9 @@ const AddPayment = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          userId,
-          bill: { billId: formValues.billId }, // Send billId directly
-          billAmount: formValues.billAmount,
-          bankAccount: { userId:{userId}, bankAccountNumber: formValues.bankAccount },
+          userId: userId,
+          bill: {billId: formValues.billId} , // Send billId directly
+          bankAccount: { bankAccountNumber: formValues.bankAccount}
         }),
       });
   
