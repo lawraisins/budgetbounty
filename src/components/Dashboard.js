@@ -44,7 +44,7 @@ const Dashboard = () => {
         <div className="dashboard-text">
           <h2>Pay and Earn Rewards!</h2>
           <p>Track your bills, make payments on time and get rewarded! Rewards earned can be used to redeem gifts issued by BudgetBounty's official partners.</p>
-          <button>Get Started with Bill Management Today</button>
+          <button>Make a payment now!</button>
         </div>
         
         <div className="dashboard-image">
