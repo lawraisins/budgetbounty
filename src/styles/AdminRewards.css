@@ -1,14 +1,14 @@
 .admin-rewards-page {
     width: 100%;
     max-width: 900px;
-    margin: 0 auto;
+    margin: 50px auto 0; /* Increased top margin to push down */
     text-align: center;
 }
 
 .add-reward-form {
     background: #f8f8f8;
     padding: 20px;
-    margin-bottom: 20px;
+    margin: 40px auto; /* Increased margin to push down */
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
@@ -41,12 +41,13 @@
 }
 
 .reward-list {
-    margin-top: 20px;
+    margin-top: 60px; /* Increased margin to push it down */
 }
 
 .reward-list table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 20px; /* Added margin-top to shift table down */
 }
 
 .reward-list th, .reward-list td {
@@ -76,15 +77,16 @@
 .success-message {
     color: green;
     font-weight: bold;
+    margin-top: 20px; /* Push success message down */
 }
 
 .error-message {
     color: red;
     font-weight: bold;
+    margin-top: 20px; /* Push error message down */
 }
 
-
+/* Adjustments for overall spacing */
 .add-bill-form, .admin-rewards-form {
-    margin-top: 30px;
+    margin-top: 50px; /* Pushes both sections further down */
 }
-
