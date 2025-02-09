@@ -1,0 +1,48 @@
+.add-bill-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    min-height: 80vh; /* Ensures form is centered properly */
+    padding: 20px;
+}
+
+.add-bill-form {
+    width: 100%;
+    max-width: 500px; /* Adjust width for better visibility */
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-bill-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.add-bill-form input,
+.add-bill-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.add-bill-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #6c63ff; /* Same purple theme */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.add-bill-form button:hover {
+    background-color: #574bdb;
+}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -18,8 +18,25 @@ import Profile from './components/Profile';
 const Layout = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [isAdmin, setIsAdmin] = useState(false);
   
-  const isAuthenticated = localStorage.getItem("isAuthenticated"); // Check if user is logged in
+  const isAuthenticated = localStorage.getItem("isAuthenticated");
+  const userId = localStorage.getItem("userId");
+
+  // Check if user is admin
+  useEffect(() => {
+    if (userId) {
+      fetch(`http://localhost:8087/auth/${userId}/is-admin`)
+        .then((response) => response.json())
+        .then((data) => {
+          setIsAdmin(data);
+          if (data && location.pathname === "/") {
+            navigate("/admin/add-bill"); // Redirect Admin to AddBill only on initial login
+          }
+        })
+        .catch((error) => console.error("Error checking admin status:", error));
+    }
+  }, [userId, navigate, location.pathname]);
 
   useEffect(() => {
     if (!isAuthenticated && location.pathname !== "/login" && location.pathname !== "/register") {
@@ -37,18 +54,32 @@ const Layout = () => {
           <Route path="/" element={isAuthenticated ? <Dashboard /> : <Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/payments" element={isAuthenticated ? <Payments /> : <Login />}>
-            <Route index element={<ManagePayments />} />
-            <Route path="manage" element={<ManagePayments />} />
-            <Route path="add" element={<AddPayment />} />
-            <Route path="add-bill" element={<AddBill />} />
-            <Route path="history" element={<PaymentHistory />} />
+
+          {/* Payments Section */}
+          <Route path="/payments" element={isAuthenticated ? <Payments isAdmin={isAdmin} /> : <Login />}>
+            {isAdmin ? (
+              <Route path="add-bill" element={<AddBill />} />
+            ) : (
+              <>
+                <Route index element={<ManagePayments />} />
+                <Route path="manage" element={<ManagePayments />} />
+                <Route path="add" element={<AddPayment />} />
+                <Route path="history" element={<PaymentHistory />} />
+              </>
+            )}
           </Route>
+
+          {/* Rewards */}
           <Route path="/rewards" element={isAuthenticated ? <Rewards /> : <Login />}>
-          <Route index element={<RewardsCatalogue />} />
-          <Route path="my" element={<MyRewards />} />
+            <Route index element={<RewardsCatalogue />} />
+            <Route path="my" element={<MyRewards />} />
           </Route>
+
+          {/* Profile Page - Now accessible to Admins too */}
           <Route path="/profile" element={isAuthenticated ? <Profile /> : <Login />} />
+          
+          {/* Admin-Only Route */}
+          <Route path="/admin/add-bill" element={isAdmin ? <AddBill /> : <Dashboard />} />
         </Routes>
       </main>
       <Footer />

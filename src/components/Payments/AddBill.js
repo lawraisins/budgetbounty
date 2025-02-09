@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import "../../styles/AddBill.css";
+
 
 const AddBill = () => {
   const [formValues, setFormValues] = useState({
@@ -6,14 +8,14 @@ const AddBill = () => {
     amount: "",
     recurring: "false",
     dueDate: "",
-    userId: "", // Added user selection
+    userId: "",
   });
 
-  const [users, setUsers] = useState([]); // Store all users
+  const [users, setUsers] = useState([]);
   const [errors, setErrors] = useState({});
-  const [message, setMessage] = useState(""); // Success message
+  const [message, setMessage] = useState("");
 
-  // Fetch all users from the backend when the component loads
+  // Fetch all users
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -33,10 +35,10 @@ const AddBill = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-    setErrors({ ...errors, [name]: "" }); // Clear the error when user types
+    setErrors({ ...errors, [name]: "" });
   };
 
-  // Validate input fields
+  // Validate form fields
   const validate = () => {
     const newErrors = {};
     if (!formValues.billName.trim()) newErrors.billName = "Bill Name cannot be empty";
@@ -55,10 +57,10 @@ const AddBill = () => {
 
     const billData = {
       billName: formValues.billName,
-      amount: parseFloat(formValues.amount), // Ensure number format
-      recurring: formValues.recurring === "true", // Convert to boolean
+      amount: parseFloat(formValues.amount),
+      recurring: formValues.recurring === "true",
       dueDate: formValues.dueDate,
-      user: { userId: formValues.userId }, // Assign selected userId
+      user: { userId: formValues.userId },
       billStatus: "Unpaid",
     };
 
@@ -84,10 +86,10 @@ const AddBill = () => {
   };
 
   return (
-    <div className="add-payment-form-container">
+    <div className="add-bill-form-container">
       <h2 style={{ textAlign: "center" }}>Add New Bill</h2>
       {message && <p style={{ color: message.includes("success") ? "green" : "red" }}>{message}</p>}
-      <form className="add-payment-form" onSubmit={handleSubmit}>
+      <form className="add-bill-form" onSubmit={handleSubmit}>
         <label>
           Bill Name
           <input type="text" name="billName" value={formValues.billName} onChange={handleChange} />
@@ -120,7 +122,7 @@ const AddBill = () => {
             <option value="">Select a user</option>
             {users.map((user) => (
               <option key={user.userId} value={user.userId}>
-                {user.userId} - {user.username} {/* Show userId + username for clarity */}
+                {user.userId} - {user.username}
               </option>
             ))}
           </select>
