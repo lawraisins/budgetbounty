@@ -69,6 +69,8 @@ const AdminRewards = () => {
 
   return (
     <div className="admin-rewards-page">
+    <br></br>
+    <br></br>
       <h1>Manage Rewards</h1>
 
       {/* Success & Error Messages */}

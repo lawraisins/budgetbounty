@@ -8,7 +8,7 @@
 .add-reward-form {
     background: #f8f8f8;
     padding: 20px;
-    margin: 40px auto; /* Increased margin to push down */
+    margin: 50px auto; /* Increased margin to push down */
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
