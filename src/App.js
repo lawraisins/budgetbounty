@@ -14,6 +14,7 @@ import Rewards from './components/Rewards/Rewards';
 import RewardsCatalogue from './components/Rewards/RewardsCatalogue';
 import MyRewards from './components/Rewards/MyRewards';
 import Profile from './components/Profile';
+import AdminRewards from './components/Rewards/AdminRewards'; // Import AdminRewards page
 
 const Layout = () => {
   const location = useLocation();
@@ -70,9 +71,13 @@ const Layout = () => {
           </Route>
 
           {/* Rewards */}
-          <Route path="/rewards" element={isAuthenticated ? <Rewards /> : <Login />}>
-            <Route index element={<RewardsCatalogue />} />
-            <Route path="my" element={<MyRewards />} />
+          <Route path="/rewards" element={isAuthenticated ? (isAdmin ? <AdminRewards /> : <Rewards />) : <Login />}>
+            {!isAdmin && (
+              <>
+                <Route index element={<RewardsCatalogue />} />
+                <Route path="my" element={<MyRewards />} />
+              </>
+            )}
           </Route>
 
           {/* Profile Page - Now accessible to Admins too */}

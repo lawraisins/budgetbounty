@@ -1,0 +1,90 @@
+.admin-rewards-page {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.add-reward-form {
+    background: #f8f8f8;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-reward-form h2 {
+    margin-bottom: 15px;
+}
+
+.add-reward-form input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.add-reward-form button {
+    width: 85%;
+    padding: 10px;
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.add-reward-form button:hover {
+    background-color: #574bdb;
+}
+
+.reward-list {
+    margin-top: 20px;
+}
+
+.reward-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.reward-list th, .reward-list td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.reward-list th {
+    background-color: #6c63ff;
+    color: white;
+}
+
+.reward-list .delete-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.reward-list .delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.success-message {
+    color: green;
+    font-weight: bold;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}
+
+
+.add-bill-form, .admin-rewards-form {
+    margin-top: 30px;
+}
+
