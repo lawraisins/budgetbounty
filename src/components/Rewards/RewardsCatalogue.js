@@ -110,16 +110,16 @@ const RewardsCatalogue = () => {
           <div className="rewards-image">
             <img src={image} alt="Thumbs Up Illustration" />
           </div>
+          <div>
           <RewardsCard setPoints={setUserPoints} /> {/* Pass setPoints function to update userPoints */}
-        </div>
-
         <p>
           Use your reward points to unlock exclusive deals and discounts.
+          </p>
+          <p>
           Browse the options below to redeem your points!
         </p>
-
-        <div className="filters">
-          <label>Sort by:</label>
+        <div className="sort-controls">
+          {/* <label>Sort by:</label> */}
           <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
             <option value="">Default</option>
             <option value="points-asc">Points (Low to High)</option>
@@ -128,6 +128,10 @@ const RewardsCatalogue = () => {
             <option value="alpha-desc">Alphabetical (Z-A)</option>
             <option value="affordable">Affordable (Within My Points)</option>
           </select>
+        </div>
+        </div>
+
+
         </div>
 
         <div className="reward-cards">
