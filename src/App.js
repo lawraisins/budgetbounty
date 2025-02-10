@@ -49,7 +49,7 @@ const Layout = () => {
 
   return (
     <div className="app-container">
-      {!hideHeader && <Header />}
+      {!hideHeader && <Header isAdmin={isAdmin} />}
       <main className="content">
         <Routes>
           <Route path="/" element={isAuthenticated ? <Dashboard /> : <Login />} />
