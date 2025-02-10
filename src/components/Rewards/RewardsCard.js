@@ -36,7 +36,7 @@ const RewardsCard = ({ setPoints }) => {
   return (
     <div className="points" style={{ background: getPointsBackgroundColor(points) }}>
       <h4>{getMembershipTier(points)} Member</h4>
-      <h1>{points}</h1>
+      <h1 id="pointscount">{points}</h1>
       <h3>Points</h3>
     </div>
   );
