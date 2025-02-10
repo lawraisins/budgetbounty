@@ -16,9 +16,6 @@ const Modal = ({ reward, onConfirm, onCancel }) => (
   </div>
 );
 
-
-
-
 const RewardsCatalogue = () => {
   const [rewards, setRewards] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -61,9 +58,6 @@ const RewardsCatalogue = () => {
         const updatedPoints = data.user.totalPoints;  // Get updated points from response
         setUserPoints(updatedPoints); // Update the points in frontend state
   
-        // Optionally, you can also directly update the user's points locally:
-        // setUserPoints(prevPoints => prevPoints - selectedReward.pointsRequired); 
-  
         // Hide modal after redemption
         setIsModalOpen(false);
       }
@@ -74,7 +68,6 @@ const RewardsCatalogue = () => {
       setIsModalOpen(false);
     });
   };
-  
 
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -106,32 +99,29 @@ const RewardsCatalogue = () => {
       
       <div className="rewards-content">
         <h1>Rewards Catalogue</h1>
+        <p>
+              Use your reward points to unlock exclusive deals and discounts.
+            </p>
+            <p>
+              Browse the options below to redeem your points!
+            </p>
         <div className='reward-points-card'>
           <div className="rewards-image">
             <img src={image} alt="Thumbs Up Illustration" />
           </div>
-          <div>
-          <RewardsCard setPoints={setUserPoints} /> {/* Pass setPoints function to update userPoints */}
-        <p>
-          Use your reward points to unlock exclusive deals and discounts.
-          </p>
-          <p>
-          Browse the options below to redeem your points!
-        </p>
-        <div className="sort-controls">
-          {/* <label>Sort by:</label> */}
-          <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
-            <option value="">Default</option>
-            <option value="points-asc">Points (Low to High)</option>
-            <option value="points-desc">Points (High to Low)</option>
-            <option value="alpha-asc">Alphabetical (A-Z)</option>
-            <option value="alpha-desc">Alphabetical (Z-A)</option>
-            <option value="affordable">Affordable (Within My Points)</option>
-          </select>
-        </div>
-        </div>
-
-
+          <div className="rewards-content">
+            <RewardsCard setPoints={setUserPoints} /> {/* Pass setPoints function to update userPoints */}
+            <div className="sort-controls">
+              <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
+                <option value="">Default</option>
+                <option value="points-asc">Points (Low to High)</option>
+                <option value="points-desc">Points (High to Low)</option>
+                <option value="alpha-asc">Alphabetical (A-Z)</option>
+                <option value="alpha-desc">Alphabetical (Z-A)</option>
+                <option value="affordable">Affordable (Within My Points)</option>
+              </select>
+            </div>
+          </div>
         </div>
 
         <div className="reward-cards">
@@ -159,6 +149,11 @@ const RewardsCatalogue = () => {
         {!showAllRewards && (
           <button className="all-rewards" onClick={() => setShowAllRewards(true)}>
             View All Rewards
+          </button>
+        )}
+        {showAllRewards && (
+          <button className="all-rewards" onClick={() => setShowAllRewards(false)}>
+            Collapse Rewards
           </button>
         )}
       </div>
