@@ -81,7 +81,7 @@ const Layout = () => {
           </Route>
 
           {/* Profile Page - Now accessible to Admins too */}
-          <Route path="/profile" element={isAuthenticated ? <Profile /> : <Login />} />
+          <Route path="/profile" element={isAuthenticated ? <Profile isAdmin={isAdmin} /> : <Login />} />
           
           {/* Admin-Only Route */}
           <Route path="/admin/add-bill" element={isAdmin ? <AddBill /> : <Dashboard />} />

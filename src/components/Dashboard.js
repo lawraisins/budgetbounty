@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/Dashboard.css';
 import WelcomeBanner from './WelcomeBanner';
@@ -10,6 +11,7 @@ const Dashboard = () => {
   const [firstName, setFirstName] = useState('User');
   const [totalPoints, setTotalPoints] = useState(0);
   const [nextPayments, setNextPayments] = useState([]); // Change to an array to store multiple bills
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userId = localStorage.getItem("userId"); // Get userId from local storage
@@ -44,7 +46,7 @@ const Dashboard = () => {
         <div className="dashboard-text">
           <h2>Pay and Earn Rewards!</h2>
           <p>Track your bills, make payments on time and get rewarded! Rewards earned can be used to redeem gifts issued by BudgetBounty's official partners.</p>
-          <button>Make a payment now!</button>
+          <button onClick={() => navigate('/payments/add')}>Make a payment now!</button>
         </div>
         
         <div className="dashboard-image">
