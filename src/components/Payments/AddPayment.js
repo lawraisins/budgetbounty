@@ -66,7 +66,7 @@ const AddPayment = () => {
       return;
     }
 
-    try {
+    try { //comment line 70 to 78 out for sumair
       const checkResponse = await fetch(
         `http://localhost:8087/bank-accounts/exists?userId=${userId}&bankAccountNumber=${newBankAccount}`
       );
