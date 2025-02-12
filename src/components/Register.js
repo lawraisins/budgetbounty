@@ -35,6 +35,7 @@ const Register = () => {
   
     let hasError = false;
     const newErrors = {};
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&#]{8,}$/;
   
     if (!formData.username) {
       newErrors.username = "Username cannot be blank.";
@@ -50,6 +51,9 @@ const Register = () => {
     }
     if (!formData.password) {
       newErrors.password = "Password cannot be blank.";
+      hasError = true;
+    } else if (!passwordRegex.test(formData.password)) {
+      newErrors.password = "Password must be at least 8 characters long, contain 1 uppercase, 1 lowercase, 1 number, and 1 special character.";
       hasError = true;
     }
     if (!formData.confirm) {
@@ -93,6 +97,7 @@ const Register = () => {
       }
     }
   };
+  
   
 
   return (
