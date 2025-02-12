@@ -65,35 +65,40 @@ const AddPayment = () => {
       alert("Bank account number cannot be empty.");
       return;
     }
-
-    try { //comment line 70 to 78 out for sumair
+  
+    if (!/^\d+$/.test(newBankAccount)) {  // Ensures only numeric characters
+      alert("Bank account number must contain only numbers.");
+      return;
+    }
+  
+    try {
       const checkResponse = await fetch(
         `http://localhost:8087/bank-accounts/exists?userId=${userId}&bankAccountNumber=${newBankAccount}`
       );
       const exists = await checkResponse.json();
-
+  
       if (exists) {
         alert("This bank account already exists.");
         return;
       }
-
+  
       await fetch("http://localhost:8087/bank-accounts/add", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({ userId, bankAccountNumber: newBankAccount }),
       });
-
+  
       alert("Bank account added successfully!");
       setNewBankAccount("");
       setShowNewAccountInput(false);
-      
+  
       const updatedAccounts = await fetch(`http://localhost:8087/bank-accounts/${userId}`).then((res) => res.json());
       setBankAccounts(updatedAccounts);
     } catch (error) {
       console.error("Error adding bank account:", error);
     }
   };
-
+  
   const validate = () => {
     const newErrors = {};
     if (!formValues.billName.trim()) newErrors.billName = "Please select a bill";
