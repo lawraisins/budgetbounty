@@ -32,9 +32,20 @@
   text-align: left;
 }
 
+.form-input-login .form-input-field:focus {
+  border-color: #6c63ff; /* Purple border when focused */
+  border-width: 2px;
+}
+
 .form-input-login .error {
   color: red;
 }
+
+.form-input-field.error-border {
+  border-color: red;
+  border-width: 2px;
+}
+
 
 .form-input-login .form-icon {
   position: absolute;

@@ -17,13 +17,12 @@ function FormInput({ label, name, type, value, onChange, placeholder, error }) {
       <label>{label}</label>
       <div className="form-input-container">
         <input
-          className="form-input-field"
+          className={`form-input-field ${error ? "error-border" : ""}`}
           name={name}
           type={isPasswordField && showPassword ? "text" : type}
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          style={{ borderColor: error ? "red" : "black" }}
         />
         {isPasswordField && (
           <img className="form-icon"

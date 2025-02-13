@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import FormInput from './FormInput';
 import WelcomeBanner from './WelcomeBanner';
 import '../styles/Login.css';
+import '../styles/FormInput.css'
 
 const Login = () => {
   const [formData, setFormData] = useState({
