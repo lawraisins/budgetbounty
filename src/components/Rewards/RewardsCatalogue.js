@@ -24,6 +24,8 @@ const RewardsCatalogue = () => {
   const [showAllRewards, setShowAllRewards] = useState(false);
   const [sortOption, setSortOption] = useState('');
   const [userPoints, setUserPoints] = useState(0); // Points state received from RewardsCard
+  const [refreshPoints, setRefreshPoints] = useState(false); // New state to trigger refresh
+
 
   useEffect(() => {
     fetch('http://localhost:8087/rewards/all')
@@ -52,13 +54,14 @@ const RewardsCatalogue = () => {
     .then(data => {
       if (data) {
         alert('Redemption successful!');
-        setRedeemedRewards([...redeemedRewards, selectedReward.rewardId]);
         
-        // Update points after redemption
-        const updatedPoints = data.user.totalPoints;  // Get updated points from response
-        setUserPoints(updatedPoints); // Update the points in frontend state
+        // Update points in state
+        const updatedPoints = data.user.totalPoints;
+        setUserPoints(updatedPoints); 
   
-        // Hide modal after redemption
+        // Toggle refreshPoints to trigger re-fetch in RewardsCard
+        setRefreshPoints(prev => !prev);
+  
         setIsModalOpen(false);
       }
     })
@@ -68,6 +71,7 @@ const RewardsCatalogue = () => {
       setIsModalOpen(false);
     });
   };
+  
 
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -110,7 +114,7 @@ const RewardsCatalogue = () => {
             <img src={image} alt="Thumbs Up Illustration" />
           </div>
           <div className="rewards-content">
-            <RewardsCard setPoints={setUserPoints} /> {/* Pass setPoints function to update userPoints */}
+          <RewardsCard setPoints={setUserPoints} refreshPoints={refreshPoints} />
             <div className="sort-controls">
               <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
                 <option value="">Default</option>
@@ -125,26 +129,15 @@ const RewardsCatalogue = () => {
         </div>
 
         <div className="reward-cards">
-          {(showAllRewards ? filteredRewards : filteredRewards.slice(0, 3)).map((reward) => (
-            <div
-              key={reward.rewardId}
-              className="reward-card"
-              style={{
-                opacity: redeemedRewards.includes(reward.rewardId) ? 0.5 : 1,
-                pointerEvents: redeemedRewards.includes(reward.rewardId) ? 'none' : 'auto',
-              }}
-            >
-              <h3>{reward.rewardName}</h3>
-              <p>{reward.pointsRequired} Points</p>
-              <button
-                onClick={() => handleRedeemClick(reward)}
-                disabled={redeemedRewards.includes(reward.rewardId)}
-              >
-                {redeemedRewards.includes(reward.rewardId) ? 'Redeemed' : 'Redeem'}
-              </button>
-            </div>
-          ))}
-        </div>
+  {(showAllRewards ? filteredRewards : filteredRewards.slice(0, 3)).map((reward) => (
+    <div key={reward.rewardId} className="reward-card">
+      <h3>{reward.rewardName}</h3>
+      <p>{reward.pointsRequired} Points</p>
+      <button onClick={() => handleRedeemClick(reward)}>Redeem</button>
+    </div>
+  ))}
+</div>
+
 
         {!showAllRewards && (
           <button className="all-rewards" onClick={() => setShowAllRewards(true)}>

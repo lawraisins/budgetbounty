@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../styles/Rewards.css';
 
-const RewardsCard = ({ setPoints }) => {
+const RewardsCard = ({ setPoints, refreshPoints }) => {
   const [points, setLocalPoints] = useState(0);
   const [isAdmin, setIsAdmin] = useState(false); // Track if user is admin
 
@@ -30,7 +30,7 @@ const RewardsCard = ({ setPoints }) => {
         })
         .catch(error => console.error("Error checking admin status:", error));
     }
-  }, [setPoints]);
+  }, [refreshPoints]);
 
   const getPointsBackgroundColor = (points) => {
     if (isAdmin) return 'linear-gradient(to right,rgb(240, 186, 171), #FF9A8B, #FF6A88)'; // Admin: Visual Studio Dark Blue Theme
